@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder - Survey</title>
      <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
@@ -38,7 +38,7 @@
      <small>Rate your response to each questions from 1 (Strongly Agree) to 5 (Strongly Disagree)</small>
      <br><br>
    
-    <p>1. Your mind is always buzzing with unexplored ideas and plans.</p>
+    <p id="q1">1. Your mind is always buzzing with unexplored ideas and plans.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -47,7 +47,7 @@
       <option>5 (Strongly Disagree)</option>
     </select>
 <br><br>
-     <p>2. Generally speaking, you rely more on your experience than your imagination.</p>
+     <p id="q2">2. Generally speaking, you rely more on your experience than your imagination.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -57,7 +57,7 @@
     </select>
 
     <br><br>
-     <p>3. You find it easy to stay relaxed and focused even when there is some pressure.</p>
+     <p id="q3">3. You find it easy to stay relaxed and focused even when there is some pressure.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -67,7 +67,7 @@
     </select>
 
     <br><br>
-     <p>4. You rarely do something just out of sheer curiosity.</p>
+     <p id="q4">4. You rarely do something just out of sheer curiosity.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -77,7 +77,7 @@
     </select>
 
         <br><br>
-     <p>5. People can rarely upset you.</p>
+     <p id="q5">5. People can rarely upset you.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -87,7 +87,7 @@
     </select>
 
         <br><br>
-     <p>6. It is often difficult for you to relate to other people’s feelings.</p>
+     <p id="q6">6. It is often difficult for you to relate to other people’s feelings.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -97,7 +97,7 @@
     </select>
 
         <br><br>
-     <p>7. In a discussion, truth should be more important than people’s sensitivities.</p>
+     <p id="q7">7. In a discussion, truth should be more important than people’s sensitivities.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -107,7 +107,7 @@
     </select>
 
         <br><br>
-     <p>8.You rarely get carried away by fantasies and ideas.</p>
+     <p id="q8">8.You rarely get carried away by fantasies and ideas.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -117,7 +117,7 @@
     </select>
 
         <br><br>
-     <p>9.You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
+     <p id="q9">9.You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -127,7 +127,7 @@
     </select>
 
         <br><br>
-     <p>10. You feel more energetic after spending time with a group of people.</p>
+     <p id="q10">10. You feel more energetic after spending time with a group of people.</p>
     <select class="form-control" >
       <option>1 (Strongly Agree)</option>
       <option>2</option>
@@ -138,7 +138,7 @@
     
   </div>
 
-                <p><a href="#" class="btn btn-primary btn-xl">Submit</a></p>
+  <a type="submit" class="btn btn-primary btn-xl submit">Submit</a>
 </form>
 
     </div>
@@ -148,15 +148,96 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     
-                    <p><a href="#">API Friends List</a> | <a href="https://github.com/susanchiemi/friendfinder-week-13">GitHub Repo</a> | <a href="home.html">Back Home</a></p>
+                    <p><a href="api/friends">API Friends List</a> | <a href="https://github.com/susanchiemi/friendfinder-week-13">GitHub Repo</a> | <a href="home.html">Back Home</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-
-
+<div id="resultsModal" class="modal fade" role="dialog">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h2 class="modal-title"><strong>Best Match</strong></h2>
+  </div>
+  <div class="modal-body">
+      <h2 id="matchingName"></h2>
+      <img id="matchImg" src="#" alt="">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+  </div>
+</div>    
 <!--link to Javascript -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+<!-- having trouble here - was not able to see the added name and the modal -->
+<script type="text/javascript">
+//chosen CSS
+/* var config = {
+  ".chosen-select": {},
+  ".chosen-select-deselect": { allow_single_deselect:true},
+  ".chosen-select-no-single": { disable_search_threshold:10},
+  ".chosen-select-no-results": { no_results_text: "Opps, nothing found!"},
+  ".chosen-select-width": { width: "95%"},
+};
+
+for (var selector in config) {
+  $(selector).chosen(config[selector]);
+} */
+//capture the form inputs
+  $(".submit").on("click", function(){
+
+    //form validation
+    function validateForm(){
+      var isValid = true;
+      $(".form-control").each(function() {
+        if($(this).val()=== ""){
+          isValid = false;
+        }
+      });
+      $(".chosen-select").each(function(){
+        if($(this).val()=== ""){
+          isValid = false;
+      }
+    });
+      return isValid;
+    }
+  //if all required fields are filled
+  if(validateForm()){
+  //create an object for the user's data
+  var userData = {
+    name: $("#name").val(),
+    photo: $("#photo").val(),
+    scores: [
+      $("#q1").val(),
+      $("#q2").val(),
+      $("#q3").val(),
+      $("#q4").val(),
+      $("#q5").val(),
+      $("#q6").val(),
+      $("#q7").val(),
+      $("#q8").val(),
+      $("#q9").val(),
+      $("#q10").val()
+  ]
+  };
+  
+  //grab the url of the website
+  var currentURL = window.location.origin;
+  
+  //AJAX post the data to the friends API
+  $.post(currentURL + "/api/friends", userData, function(data){
+    $("#resultsModal").modal("toggle");
+    alert ("working");
+  });
+}
+else {
+  alert("Please fill out all fields before submitting!");
+}
+return false;
+  });
+  </script>
 </body>
 </html>
