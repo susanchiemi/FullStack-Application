@@ -5,7 +5,7 @@ var path = require("path");
 // Tells node that we are creating an "express" server
 var app = express();
 
-// Sets an initial port. Use this later listener
+// Sets an initial port.
 var PORT = process.env.PORT || 3000;
 
 //added this 8/29/2017
