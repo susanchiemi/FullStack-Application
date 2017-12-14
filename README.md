@@ -8,7 +8,7 @@
 * [Visual Studio Code](https://code.visualstudio.com/) - code editor
 * Command Line with Terminal to push project to Github
 * [Bootstrap](https://getbootstrap.com/) - css framework
-* [Node.js] (https://nodejs.org/en/) - open source server framework (javascript)
+* [Node] (https://nodejs.org/en/) - open source server framework (javascript)
 * [GitHub](https://help.github.com)  repository hosting service
 * [Heroku](https://www.heroku.com/) cloud application platform
 
